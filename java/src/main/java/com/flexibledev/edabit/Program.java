@@ -1,5 +1,7 @@
 package com.flexibledev.edabit;
 
+import java.util.Arrays;
+
 /**
  * Program
  */
@@ -19,5 +21,16 @@ public class Program {
 
     public static int countWords(String s) {
         return (int)s.chars().filter(c -> Character.isWhitespace(c)).count() + 1;
-	}
+    }
+    
+    /**
+     * Title : Xs and Os, Nobody Knows
+     * https://edabit.com/challenge/bkFqwEP5Gej23didA
+     */
+    public static boolean getXO (String str) {
+        long count_O = str.chars().filter(ch -> ch == 'o' || ch == 'O').count();
+        long count_X = str.chars().filter(ch -> ch == 'x' || ch == 'X').count();
+
+		return count_O == count_X;
+    }
 }

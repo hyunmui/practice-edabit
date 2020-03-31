@@ -12,10 +12,10 @@ public class Challenge {
 	}
 
 	public static int[] calculateScores(String str) {
-		int[] scores = {0, 0, 0};
+		int[] scores = { 0, 0, 0 };
 
 		str.chars().forEach(win -> {
-			char w = (char)win;
+			char w = (char) win;
 			if (w == 'A')
 				scores[0]++;
 			else if (w == 'B')
@@ -33,5 +33,50 @@ public class Challenge {
 
 	public static boolean canCapture(String[] rooks) {
 		return rooks[0].chars().anyMatch(c -> rooks[1].chars().anyMatch(x -> x == c));
+	}
+
+	static final int[] VOWELS = { 'a', 'e', 'i', 'o', 'u' };
+
+	public static int getCount(String str) {
+		return (int) str.chars().filter(ch -> {
+			for (int i = 0; i < VOWELS.length; i++) {
+				if (VOWELS[i] == ch)
+					return true;
+			}
+			return false;
+		}).count();
+	}
+
+	/**
+	 * Title : Difference of Max and Min Numbers in Array
+	 * Link : https://edabit.com/challenge/hymPkXdhmDQLe87QT
+	 */
+	public static int differenceMaxMin(int[] arr) {
+		int max = Arrays.stream(arr).max().getAsInt();
+		int min = Arrays.stream(arr).min().getAsInt();
+		return max - min;
+	}
+
+	/**
+	 * Title : Double Letters
+	 * Link : https://edabit.com/challenge/EaWY5d2pYBckrkAnS
+	 */
+	public static boolean doubleLetters(String word) {
+		return word.matches(".*([a-z])\\1.*");
+	}
+
+	/**
+	 * Title : Repeating Letters N Times
+	 * Link : https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	 */
+	public static String repeat(String str, int n) {
+		StringBuffer buffer = new StringBuffer();
+
+		str.chars().forEach(ch -> {
+			for (int i = 0; i < n; i++)
+				buffer.append(String.valueOf((char)ch));
+		});
+		
+		return buffer.toString();
 	}
 }
