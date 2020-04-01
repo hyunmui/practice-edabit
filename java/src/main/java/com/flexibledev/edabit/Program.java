@@ -33,4 +33,19 @@ public class Program {
 
 		return count_O == count_X;
     }
+
+    /**
+     * Title : Array Of Multiples
+     * Link : https://edabit.com/challenge/rzpucPyoyEtXPo2BG
+     * @param num
+     * @param length
+     * @return
+     */
+    public static int[] arrayOfMultiples(int num, int length) {
+        int[] result = new int[length];
+        for (int i = 0; i < result.length; i++) {
+            result[i] = num * (i + 1);
+        }
+        return result;
+	}
 }
