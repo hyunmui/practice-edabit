@@ -1,7 +1,5 @@
 package com.flexibledev.edabit;
 
-import java.util.Arrays;
-
 /**
  * Program
  */
