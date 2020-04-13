@@ -121,4 +121,27 @@ public class Challenge {
 		}
 		return true;
 	}
+
+	/**
+	 * Title : Special Arrays
+	 * Link : https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
+	 */
+	public static boolean isSpecialArray(int[] arr) {
+		
+		for (int i = 0; i < arr.length; i++) {
+			int value = arr[i];
+			if (isEven(i) != isEven(value) || isOdd(i) != isOdd(value))
+				return false;
+		}
+
+		return true;
+	}
+
+	public static boolean isOdd(int value) {
+		return !isEven(value);
+	}
+	
+	public static boolean isEven(int value) {
+		return value % 2 == 0;
+	}
 }
