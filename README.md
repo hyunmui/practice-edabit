@@ -3,7 +3,7 @@
 ## Contents
 
 - [Practice Edabit](#practice-edabit)
-  - [Contents](#contents
+  - [Contents](#contents)
   - [Practice Languages](#practice-languages)
 
 ## Practice Languages

@@ -48,8 +48,8 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : Difference of Max and Min Numbers in Array
-	 * Link : https://edabit.com/challenge/hymPkXdhmDQLe87QT
+	 * Title : Difference of Max and Min Numbers in Array Link :
+	 * https://edabit.com/challenge/hymPkXdhmDQLe87QT
 	 */
 	public static int differenceMaxMin(int[] arr) {
 		int max = Arrays.stream(arr).max().getAsInt();
@@ -58,25 +58,50 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : Double Letters
-	 * Link : https://edabit.com/challenge/EaWY5d2pYBckrkAnS
+	 * Title : Double Letters Link : https://edabit.com/challenge/EaWY5d2pYBckrkAnS
 	 */
 	public static boolean doubleLetters(String word) {
 		return word.matches(".*([a-z])\\1.*");
 	}
 
 	/**
-	 * Title : Repeating Letters N Times
-	 * Link : https://edabit.com/challenge/HDk4PC9w6KPS3X25W
+	 * Title : Repeating Letters N Times Link :
+	 * https://edabit.com/challenge/HDk4PC9w6KPS3X25W
 	 */
 	public static String repeat(String str, int n) {
 		StringBuffer buffer = new StringBuffer();
 
 		str.chars().forEach(ch -> {
 			for (int i = 0; i < n; i++)
-				buffer.append(String.valueOf((char)ch));
+				buffer.append(String.valueOf((char) ch));
 		});
-		
+
 		return buffer.toString();
 	}
+
+	/**
+	 * Title : Vowel Replacer
+	 * Link : https://edabit.com/challenge/iW7rtor54mbFQ2RrZ
+	 */
+	public static String replaceVowels(String str, char ch) {
+		return str.replaceAll("[a,e,i,o,u]", new String(new char[] {ch}));
+	}
+
+	/**
+	 * Title : Equality of 3 Values
+	 * Link : https://edabit.com/challenge/nfc7H9CQFqJp54uEh
+	 */
+	public static int equal(int a, int b, int c) {
+		int equalCount = a == b ? 2 : 0;
+		
+		if (equalCount == 2 && b == c) {
+			equalCount = 3;
+		} else if (equalCount == 0 && b == c) {
+			equalCount = 2;
+		} else if (equalCount == 0 && a == c) {
+			equalCount = 2;
+		}
+
+		return equalCount;
+	 }
 }
