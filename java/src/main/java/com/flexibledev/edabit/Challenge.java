@@ -80,20 +80,19 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : Vowel Replacer
-	 * Link : https://edabit.com/challenge/iW7rtor54mbFQ2RrZ
+	 * Title : Vowel Replacer Link : https://edabit.com/challenge/iW7rtor54mbFQ2RrZ
 	 */
 	public static String replaceVowels(String str, char ch) {
-		return str.replaceAll("[a,e,i,o,u]", new String(new char[] {ch}));
+		return str.replaceAll("[a,e,i,o,u]", new String(new char[] { ch }));
 	}
 
 	/**
-	 * Title : Equality of 3 Values
-	 * Link : https://edabit.com/challenge/nfc7H9CQFqJp54uEh
+	 * Title : Equality of 3 Values Link :
+	 * https://edabit.com/challenge/nfc7H9CQFqJp54uEh
 	 */
 	public static int equal(int a, int b, int c) {
 		int equalCount = a == b ? 2 : 0;
-		
+
 		if (equalCount == 2 && b == c) {
 			equalCount = 3;
 		} else if (equalCount == 0 && b == c) {
@@ -103,5 +102,23 @@ public class Challenge {
 		}
 
 		return equalCount;
-	 }
+	}
+
+	/**
+	 * Title : Check Prime 
+	 * Link : https://edabit.com/challenge/ePj2zup56kZrRbhDX
+	 * 
+	 * @param num
+	 * @return
+	 */
+	public static boolean isPrime(int num) {
+		if (num == 1)
+			return false;
+
+		for (int i = 2; i < Math.sqrt(num); i++) {
+			if (num % i == 0)
+				return false;
+		}
+		return true;
+	}
 }

@@ -12,3 +12,6 @@
   - JDK 1.8
   - Apache Maven 3.x
   - JUnit 4.13
+- [javascript](javascript)
+  - ES6
+  - Jest
