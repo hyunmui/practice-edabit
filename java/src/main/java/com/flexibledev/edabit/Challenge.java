@@ -1,6 +1,5 @@
 package com.flexibledev.edabit;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -156,5 +155,27 @@ public class Challenge {
 				"octagon", "nonagon", "decagon" };
 
 		return shapeNames[n - 1];
+	}
+
+	/**
+	 * Swapping Two by Two
+	 * 
+	 * @see https://edabit.com/challenge/Bt6tuyqL7ESZHpsec
+	 * @param str
+	 * @return
+	 */
+	public static String swapTwo(String str) {
+		StringBuffer buf = new StringBuffer();
+
+		int i = 0;
+		for (i = 0; i < str.length() && i + 3 < str.length(); i += 4) {
+			buf.append(str.substring(i + 2, i + 3 + 1));
+			buf.append(str.substring(i, i + 2));
+		}
+
+		if (i != str.length())
+			buf.append(str.substring(i, str.length()));
+
+		return buf.toString();
 	}
 }
