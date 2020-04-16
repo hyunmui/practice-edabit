@@ -4,8 +4,10 @@ import static org.junit.Assert.assertEquals;
 
 import com.flexibledev.edabit.Expert;
 
+import org.junit.Ignore;
 import org.junit.Test;
 
+@Ignore
 public class BellNumberTests {
     @Test
     public void test1() {

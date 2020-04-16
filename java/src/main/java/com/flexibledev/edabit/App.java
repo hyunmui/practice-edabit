@@ -1,7 +1,6 @@
 package com.flexibledev.edabit;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
+import java.util.Arrays;
 
 /**
  * App
@@ -9,13 +8,7 @@ import java.util.regex.Pattern;
 public class App {
 
     public static void main(String[] args) {
-        String test = "I";
-
-        Pattern wordPattern = Pattern.compile("([^a-zA-Z]*)([a-zA-Z]*)([^a-zA-Z]*)");
-        Matcher matcher = wordPattern.matcher(test);
-        
-        while(matcher.find()) {
-            System.out.println(matcher.group(3));
-        }
+        int[] nums = { 1, 2, 3, 4, 5 };
+        System.out.println(Arrays.toString(nums));
     }
 }

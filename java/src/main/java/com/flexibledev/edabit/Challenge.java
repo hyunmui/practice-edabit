@@ -1,5 +1,6 @@
 package com.flexibledev.edabit;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -105,8 +106,7 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : Check Prime 
-	 * Link : https://edabit.com/challenge/ePj2zup56kZrRbhDX
+	 * Title : Check Prime Link : https://edabit.com/challenge/ePj2zup56kZrRbhDX
 	 * 
 	 * @param num
 	 * @return
@@ -123,11 +123,10 @@ public class Challenge {
 	}
 
 	/**
-	 * Title : Special Arrays
-	 * Link : https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
+	 * Title : Special Arrays Link : https://edabit.com/challenge/YmeiRhzaiR3MCPBiT
 	 */
 	public static boolean isSpecialArray(int[] arr) {
-		
+
 		for (int i = 0; i < arr.length; i++) {
 			int value = arr[i];
 			if (isEven(i) != isEven(value) || isOdd(i) != isOdd(value))
@@ -140,8 +139,22 @@ public class Challenge {
 	public static boolean isOdd(int value) {
 		return !isEven(value);
 	}
-	
+
 	public static boolean isEven(int value) {
 		return value % 2 == 0;
+	}
+
+	/**
+	 * Shapes With N Sides
+	 * 
+	 * @see https://edabit.com/challenge/odJPfYRD3kSpE45Jf
+	 * @param n
+	 * @return
+	 */
+	public static String nSidedShape(int n) {
+		String[] shapeNames = { "circle", "semi-circle", "triangle", "square", "pentagon", "hexagon", "heptagon",
+				"octagon", "nonagon", "decagon" };
+
+		return shapeNames[n - 1];
 	}
 }
