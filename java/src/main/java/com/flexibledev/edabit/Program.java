@@ -89,5 +89,22 @@ public class Program {
      */
     public static boolean timeForMilkAndCookies(GregorianCalendar date) {
         return date.get(GregorianCalendar.MONTH) == 11 && date.get(GregorianCalendar.DAY_OF_MONTH) == 24;
-	}
+    }
+
+    /**
+     * Cumulative Array Sum
+     * 
+     * @see https://edabit.com/challenge/LmiWWX2kdWn2Z5aZv
+     * @param nums
+     * @return
+     */
+    public static int[] cumulativeSum(int[] nums) {
+        int[] arr = new int[nums.length];
+
+        for (int i = 0; i < arr.length; i++) {
+            arr[i] = (i == 0 ? 0 : arr[i - 1]) + nums[i];
+        }
+
+        return arr;
+    }
 }
