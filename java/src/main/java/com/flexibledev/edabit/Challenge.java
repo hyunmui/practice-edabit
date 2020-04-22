@@ -178,4 +178,22 @@ public class Challenge {
 
 		return buf.toString();
 	}
+
+	/**
+	 * Is the Average of All Elements a Whole Number?
+	 * 
+	 * @see https://edabit.com/challenge/yk7GqGcCpFgQrk8fH
+	 * @param arr
+	 * @return
+	 */
+	public static boolean isAvgWhole(int[] arr) {
+		int sum = 0;
+		for (int i = 0; i < arr.length; i++) {
+			sum += arr[i];
+		}
+		float avg = (float)sum / arr.length;
+		int cutAvg = (int)avg;
+
+		return avg - cutAvg == 0;
+	}
 }
