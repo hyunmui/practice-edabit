@@ -7,6 +7,10 @@ import java.util.Arrays;
  *
  */
 public class Challenge {
+
+	private Challenge() {
+	}
+
 	public static boolean sameAscii(String a, String b) {
 		return a.chars().sum() == b.chars().sum();
 	}
@@ -69,7 +73,7 @@ public class Challenge {
 	 * https://edabit.com/challenge/HDk4PC9w6KPS3X25W
 	 */
 	public static String repeat(String str, int n) {
-		StringBuffer buffer = new StringBuffer();
+		StringBuilder buffer = new StringBuilder();
 
 		str.chars().forEach(ch -> {
 			for (int i = 0; i < n; i++)
@@ -90,7 +94,7 @@ public class Challenge {
 	 * Title : Equality of 3 Values Link :
 	 * https://edabit.com/challenge/nfc7H9CQFqJp54uEh
 	 */
-	public static int equal(int a, int b, int c) {
+	public static int getEquality(int a, int b, int c) {
 		int equalCount = a == b ? 2 : 0;
 
 		if (equalCount == 2 && b == c) {
@@ -165,7 +169,7 @@ public class Challenge {
 	 * @return
 	 */
 	public static String swapTwo(String str) {
-		StringBuffer buf = new StringBuffer();
+		StringBuilder buf = new StringBuilder();
 
 		int i = 0;
 		for (i = 0; i < str.length() && i + 3 < str.length(); i += 4) {
@@ -191,9 +195,93 @@ public class Challenge {
 		for (int i = 0; i < arr.length; i++) {
 			sum += arr[i];
 		}
-		float avg = (float)sum / arr.length;
-		int cutAvg = (int)avg;
+		float avg = (float) sum / arr.length;
+		int cutAvg = (int) avg;
 
 		return avg - cutAvg == 0;
+	}
+
+	/**
+	 * 
+	 * @param str
+	 * @return
+	 */
+	public static int firstVowel(String str) {
+		char[] vowels = new char[] { 'a', 'e', 'i', 'o', 'u' };
+		for (int i = 0; i < str.length(); i++) {
+			for (int j = 0; j < vowels.length; j++) {
+				if (Character.toLowerCase(str.charAt(i)) == vowels[j]) {
+					return i;
+				}
+			}
+		}
+		return -1;
+	}
+
+	public static int gcd(int n1, int n2) {
+		int gcd = Integer.MIN_VALUE;
+		for (int commonDivisor = 1; commonDivisor <= Math.min(n1, n2); commonDivisor++) {
+			if (n1 % commonDivisor == 0 && n2 % commonDivisor == 0) {
+				gcd = commonDivisor;
+			}
+		}
+		return gcd;
+	}
+
+	public static int gcd2(int n1, int n2) {
+		int gcd = Integer.MIN_VALUE;
+
+		for (int tmpCommonDivisor = 1; tmpCommonDivisor <= Math.min(n1, n2); tmpCommonDivisor++) {
+			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
+				if (gcd < tmpCommonDivisor) {
+					gcd = tmpCommonDivisor;
+				}
+			}
+		}
+
+		return gcd;
+	}
+
+	private static int gcd1(int n1, int n2) {
+		int gcd = Math.min(n1, n2);
+
+		for (int tmpCommonDivisor = gcd; tmpCommonDivisor >= 1; tmpCommonDivisor--) {
+			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
+				return tmpCommonDivisor;
+			}
+		}
+
+		return 1;
+	}
+
+	/**
+	 * Consecutive Number?
+	 * 
+	 * @see https://edabit.com/challenge/Md6usCHQ7Xsj2fQi3
+	 * @param arr
+	 * @return
+	 */
+	public static boolean cons(int[] arr) {
+
+		Arrays.sort(arr);
+
+		for (int i = 0; i < arr.length - 1; i++) {
+			if (arr[i] + 1 != arr[i + 1]) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+
+	/**
+	 * Valid Variable Names
+	 * 
+	 * @see https://edabit.com/challenge/6gDTBRgZKpotCsgib
+	 * @param variable
+	 * @return
+	 */
+	public static boolean variableValid(String variable) {
+		return variable.matches("^[a-zA-Z_][a-zA-Z0-9_]*");
 	}
 }
