@@ -1,6 +1,7 @@
 package com.flexibledev.edabit;
 
 import java.util.Arrays;
+import java.util.stream.Stream;
 
 /**
  * Hello world!
@@ -283,5 +284,16 @@ public class Challenge {
 	 */
 	public static boolean variableValid(String variable) {
 		return variable.matches("^[a-zA-Z_][a-zA-Z0-9_]*");
+	}
+
+	/**
+	 * Maximum Possible Total
+	 * 
+	 * @see https://edabit.com/challenge/TM5f33Mpu52m2jcat
+	 * @param nums
+	 * @return
+	 */
+	public static int maxTotal(int[] nums) {
+		return Arrays.stream(nums).sorted().skip(5).sum();
 	}
 }
