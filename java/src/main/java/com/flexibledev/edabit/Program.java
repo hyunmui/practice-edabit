@@ -1,5 +1,6 @@
 package com.flexibledev.edabit;
 
+import java.util.Calendar;
 import java.util.GregorianCalendar;
 
 /**
@@ -72,6 +73,8 @@ public class Program {
                 case 6:
                     phoneNumberBuilder.append("-");
                     break;
+                default:
+                    break;
             }
 
             phoneNumberBuilder.append("" + numbers[i]);
@@ -88,7 +91,7 @@ public class Program {
      * @return boolean
      */
     public static boolean timeForMilkAndCookies(GregorianCalendar date) {
-        return date.get(GregorianCalendar.MONTH) == 11 && date.get(GregorianCalendar.DAY_OF_MONTH) == 24;
+        return date.get(Calendar.MONTH) == 11 && date.get(Calendar.DAY_OF_MONTH) == 24;
     }
 
     /**
@@ -106,5 +109,28 @@ public class Program {
         }
 
         return arr;
+    }
+
+    /**
+     * Count Ones in Binary Representation of Integer
+     * 
+     * @see https://edabit.com/challenge/MwYW3sRdZxno5hXAF
+     * @param n
+     * @return
+     */
+    public static int countOnes(int n) {
+        if (n == 0) {
+            return 0;
+        }
+        int count = 0;
+
+        while (n > 0) {
+            if (n % 2 == 1) {
+                count++;
+            }
+            n /= 2;
+        }
+
+        return count;
     }
 }
