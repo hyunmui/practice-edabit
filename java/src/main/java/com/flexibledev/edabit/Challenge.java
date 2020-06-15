@@ -1,7 +1,6 @@
 package com.flexibledev.edabit;
 
 import java.util.Arrays;
-import java.util.stream.Stream;
 
 /**
  * Hello world!
@@ -325,5 +324,22 @@ public class Challenge {
 	 */
 	public static String noYelling(String phrase) {
 		return phrase.replaceAll("([!?])+$", "$1");
+	}
+
+	/**
+	 * Find the Smallest and Biggest Numbers
+	 * 
+	 * @see https://edabit.com/challenge/J4Yop3GjeZELWeoqT
+	 * @param arr
+	 * @return
+	 */
+	public static double[] minMax(double[] arr) {
+		// Arrays.sort(arr);
+		// return new double[] { arr[0], arr[arr.length - 1] };
+
+		double min = Arrays.stream(arr).min().orElseThrow(IllegalArgumentException::new);
+		double max = Arrays.stream(arr).max().orElseThrow(IllegalArgumentException::new);
+
+		return new double[] { min, max };
 	}
 }
