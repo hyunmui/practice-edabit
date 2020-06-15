@@ -296,4 +296,34 @@ public class Challenge {
 	public static int maxTotal(int[] nums) {
 		return Arrays.stream(nums).sorted().skip(5).sum();
 	}
+
+	/**
+	 * Fix the Spacing
+	 * 
+	 * @see https://edabit.com/challenge/LJh54oryEc3tkagzD
+	 * @param sentence
+	 * @return
+	 */
+	public static String correctSpacing(String sentence) {
+		String replaceText = sentence;
+		while (true) {
+			String tmp = replaceText;
+			replaceText = replaceText.replace("  ", " ");
+
+			if (tmp.equals(replaceText))
+				break;
+		}
+		return replaceText.trim();
+	}
+
+	/**
+	 * No Yelling
+	 * 
+	 * @see https://edabit.com/challenge/33tRK98geLPcf73PF
+	 * @param phrase
+	 * @return
+	 */
+	public static String noYelling(String phrase) {
+		return phrase.replaceAll("([!?])+$", "$1");
+	}
 }
