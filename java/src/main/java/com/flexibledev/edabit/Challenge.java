@@ -228,32 +228,6 @@ public class Challenge {
 		return gcd;
 	}
 
-	public static int gcd2(int n1, int n2) {
-		int gcd = Integer.MIN_VALUE;
-
-		for (int tmpCommonDivisor = 1; tmpCommonDivisor <= Math.min(n1, n2); tmpCommonDivisor++) {
-			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
-				if (gcd < tmpCommonDivisor) {
-					gcd = tmpCommonDivisor;
-				}
-			}
-		}
-
-		return gcd;
-	}
-
-	private static int gcd1(int n1, int n2) {
-		int gcd = Math.min(n1, n2);
-
-		for (int tmpCommonDivisor = gcd; tmpCommonDivisor >= 1; tmpCommonDivisor--) {
-			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
-				return tmpCommonDivisor;
-			}
-		}
-
-		return 1;
-	}
-
 	/**
 	 * Consecutive Number?
 	 * 
@@ -289,11 +263,11 @@ public class Challenge {
 	 * Maximum Possible Total
 	 * 
 	 * @see https://edabit.com/challenge/TM5f33Mpu52m2jcat
-	 * @param nums
+	 * @param numbers
 	 * @return
 	 */
-	public static int maxTotal(int[] nums) {
-		return Arrays.stream(nums).sorted().skip(5).sum();
+	public static int maxTotal(int[] numbers) {
+		return Arrays.stream(numbers).sorted().skip(5).sum();
 	}
 
 	/**
@@ -334,12 +308,60 @@ public class Challenge {
 	 * @return
 	 */
 	public static double[] minMax(double[] arr) {
-		// Arrays.sort(arr);
-		// return new double[] { arr[0], arr[arr.length - 1] };
-
 		double min = Arrays.stream(arr).min().orElseThrow(IllegalArgumentException::new);
 		double max = Arrays.stream(arr).max().orElseThrow(IllegalArgumentException::new);
 
 		return new double[] { min, max };
+	}
+
+	/**
+	 * Say Hello, Say Bye
+	 * 
+	 * @see https://edabit.com/challenge/zFccarRuia5zq4rhP
+	 * @param name
+	 * @param num
+	 * @return
+	 */
+	public static String sayHelloBye(String name, int num) {
+		return (num == 1 ? "Hello " : "Bye ") + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+	}
+
+	/**
+	 * Solving Exponential Equations With Logarithms
+	 * 
+	 * @see https://edabit.com/challenge/oB67n674gwdTi33P4
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int solveForExp(int a, int b) {
+		int i = 0;
+		int x = 1;
+		for (; x < b; i++) {
+			x *= a;
+		}
+		return i;
+	}
+
+	/**
+	 * Convert a Number to Base 2
+	 * 
+	 * @see https://edabit.com/challenge/xH7uvX2MoH8e85aYS
+	 * @param decimal
+	 * @return
+	 */
+	public static String binary(int decimal) {
+		if (decimal == 0) {
+			return "0";
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		while (decimal > 0) {
+			sb.insert(0, decimal % 2);
+			decimal /= 2;
+		}
+
+		return sb.toString();
 	}
 }
