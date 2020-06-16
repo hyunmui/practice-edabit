@@ -364,4 +364,42 @@ public class Challenge {
 
 		return sb.toString();
 	}
+
+	/**
+	 * The Fibonacci Number
+	 * 
+	 * @see https://edabit.com/challenge/t3NThQjrcbjhiF5zt
+	 * @param a
+	 * @return
+	 */
+	public static int fibonacci(int a) {
+		int f0 = 0;
+		int f1 = 1;
+		int cnt = 0;
+
+		while (cnt != a) {
+			int f2 = f0 + f1;
+			f0 = f1;
+			f1 = f2;
+			cnt++;
+		}
+
+		return f1;
+	}
+
+	/**
+	 * Move Capital Letters to the Front
+	 * 
+	 * @see https://edabit.com/challenge/vs7xj6PwALtfpjkmX
+	 * @param str
+	 * @return
+	 */
+	public static String capToFront(String str) {
+		StringBuilder sb = str.chars().filter(Character::isUpperCase).collect(StringBuilder::new,
+				StringBuilder::appendCodePoint, StringBuilder::append);
+		sb.append(str.chars().filter(Character::isLowerCase).collect(StringBuilder::new, StringBuilder::appendCodePoint,
+				StringBuilder::append));
+
+		return sb.toString();
+	}
 }
