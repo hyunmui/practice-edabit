@@ -1,7 +1,10 @@
 package com.flexibledev.edabit.expert;
 
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import java.util.stream.Collectors;
 
 /**
  * Challenge
@@ -118,5 +121,63 @@ public class Challenge {
         sb.append(letters[letters.length - 1]);
 
         return new String[] { sb.toString(), String.valueOf(minCount) };
+    }
+
+    /**
+     * Ulam Sequence
+     * 
+     * @see https://edabit.com/challenge/RkicZ4kkcSx8K3d4e
+     * @param n
+     * @return
+     */
+    public static int ulam(int n) {
+        int[] ulams = new int[n];
+        Arrays.fill(ulams, 0);
+        ulams[0] = 1;
+        ulams[1] = 2;
+        int nextUlam = 2;
+        int i = 2;
+
+        do {
+            nextUlam++;
+            if (isUlamNumbers(nextUlam, ulams)) {
+                ulams[i++] = nextUlam;
+            }
+        } while (i < n);
+
+        return ulams[ulams.length - 1];
+    }
+
+    private static boolean isUlamNumbers(int nextUlam, int[] ulams) {
+        int equalityCnt = 0;
+
+        for (int i = 0; i < ulams.length - 1; i++) {
+            for (int j = i + 1; j < ulams.length; j++) {
+                int u1 = ulams[i];
+                int u2 = ulams[j];
+
+                if (u1 + u2 == nextUlam) {
+                    equalityCnt++;
+                    if (equalityCnt > 1) {
+                        break;
+                    }
+                }
+            }
+            if (equalityCnt > 1) {
+                break;
+            }
+        }
+        return equalityCnt == 1;
+    }
+
+    /**
+     * Next Largest Number
+     * 
+     * @see https://edabit.com/challenge/EtW6o2eH88C89NYzw
+     * @param num
+     * @return
+     */
+    public static int nextNumber(int num) {
+        return 0;
     }
 }
