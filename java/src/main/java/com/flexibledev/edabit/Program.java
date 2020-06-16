@@ -133,4 +133,15 @@ public class Program {
 
         return count;
     }
+
+    /**
+     * Remove Every Vowel from a String
+     * 
+     * @see https://edabit.com/challenge/oMCKfdMqgt9kxqA2M
+     * @param s
+     * @return
+     */
+    public static String removeVowels(String s) {
+        return s.replaceAll("(?i)[aeiou]", "");
+    }
 }
