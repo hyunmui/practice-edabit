@@ -402,4 +402,42 @@ public class Challenge {
 
 		return sb.toString();
 	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrieveMajor(String semver) {
+		return retrieveVersion(0, semver, semver);
+	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrieveMinor(String semver) {
+		return retrieveVersion(1, semver, "0");
+	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrievePatch(String semver) {
+		return retrieveVersion(2, semver, "0");
+	}
+
+	private static String retrieveVersion(int v, String semver, String def) {
+		String[] semvers = semver.split("\\.");
+		return semvers.length > v ? semvers[v] : def;
+	}
 }
