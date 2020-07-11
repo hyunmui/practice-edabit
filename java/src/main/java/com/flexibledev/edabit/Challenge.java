@@ -2,7 +2,7 @@ package com.flexibledev.edabit;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+import java.util.stream.Stream;
 import java.util.stream.Collectors;
 
 /**
@@ -231,32 +231,6 @@ public class Challenge {
 		return gcd;
 	}
 
-	public static int gcd2(int n1, int n2) {
-		int gcd = Integer.MIN_VALUE;
-
-		for (int tmpCommonDivisor = 1; tmpCommonDivisor <= Math.min(n1, n2); tmpCommonDivisor++) {
-			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
-				if (gcd < tmpCommonDivisor) {
-					gcd = tmpCommonDivisor;
-				}
-			}
-		}
-
-		return gcd;
-	}
-
-	private static int gcd1(int n1, int n2) {
-		int gcd = Math.min(n1, n2);
-
-		for (int tmpCommonDivisor = gcd; tmpCommonDivisor >= 1; tmpCommonDivisor--) {
-			if (n1 % tmpCommonDivisor == 0 && n2 % tmpCommonDivisor == 0) {
-				return tmpCommonDivisor;
-			}
-		}
-
-		return 1;
-	}
-
 	/**
 	 * Consecutive Number?
 	 * 
@@ -292,10 +266,181 @@ public class Challenge {
 	 * Maximum Possible Total
 	 * 
 	 * @see https://edabit.com/challenge/TM5f33Mpu52m2jcat
-	 * @param nums
+	 * @param numbers
 	 * @return
 	 */
-	public static int maxTotal(int[] nums) {
-		return Arrays.stream(nums).sorted().skip(5).sum();
+	public static int maxTotal(int[] numbers) {
+		return Arrays.stream(numbers).sorted().skip(5).sum();
+	}
+
+	/**
+	 * Fix the Spacing
+	 * 
+	 * @see https://edabit.com/challenge/LJh54oryEc3tkagzD
+	 * @param sentence
+	 * @return
+	 */
+	public static String correctSpacing(String sentence) {
+		String replaceText = sentence;
+		while (true) {
+			String tmp = replaceText;
+			replaceText = replaceText.replace("  ", " ");
+
+			if (tmp.equals(replaceText))
+				break;
+		}
+		return replaceText.trim();
+	}
+
+	/**
+	 * No Yelling
+	 * 
+	 * @see https://edabit.com/challenge/33tRK98geLPcf73PF
+	 * @param phrase
+	 * @return
+	 */
+	public static String noYelling(String phrase) {
+		return phrase.replaceAll("([!?])+$", "$1");
+	}
+
+	/**
+	 * Find the Smallest and Biggest Numbers
+	 * 
+	 * @see https://edabit.com/challenge/J4Yop3GjeZELWeoqT
+	 * @param arr
+	 * @return
+	 */
+	public static double[] minMax(double[] arr) {
+		double min = Arrays.stream(arr).min().orElseThrow(IllegalArgumentException::new);
+		double max = Arrays.stream(arr).max().orElseThrow(IllegalArgumentException::new);
+
+		return new double[] { min, max };
+	}
+
+	/**
+	 * Say Hello, Say Bye
+	 * 
+	 * @see https://edabit.com/challenge/zFccarRuia5zq4rhP
+	 * @param name
+	 * @param num
+	 * @return
+	 */
+	public static String sayHelloBye(String name, int num) {
+		return (num == 1 ? "Hello " : "Bye ") + Character.toUpperCase(name.charAt(0)) + name.substring(1);
+	}
+
+	/**
+	 * Solving Exponential Equations With Logarithms
+	 * 
+	 * @see https://edabit.com/challenge/oB67n674gwdTi33P4
+	 * @param a
+	 * @param b
+	 * @return
+	 */
+	public static int solveForExp(int a, int b) {
+		int i = 0;
+		int x = 1;
+		for (; x < b; i++) {
+			x *= a;
+		}
+		return i;
+	}
+
+	/**
+	 * Convert a Number to Base 2
+	 * 
+	 * @see https://edabit.com/challenge/xH7uvX2MoH8e85aYS
+	 * @param decimal
+	 * @return
+	 */
+	public static String binary(int decimal) {
+		if (decimal == 0) {
+			return "0";
+		}
+
+		StringBuilder sb = new StringBuilder();
+
+		while (decimal > 0) {
+			sb.insert(0, decimal % 2);
+			decimal /= 2;
+		}
+
+		return sb.toString();
+	}
+
+	/**
+	 * The Fibonacci Number
+	 * 
+	 * @see https://edabit.com/challenge/t3NThQjrcbjhiF5zt
+	 * @param a
+	 * @return
+	 */
+	public static int fibonacci(int a) {
+		int f0 = 0;
+		int f1 = 1;
+		int cnt = 0;
+
+		while (cnt != a) {
+			int f2 = f0 + f1;
+			f0 = f1;
+			f1 = f2;
+			cnt++;
+		}
+
+		return f1;
+	}
+
+	/**
+	 * Move Capital Letters to the Front
+	 * 
+	 * @see https://edabit.com/challenge/vs7xj6PwALtfpjkmX
+	 * @param str
+	 * @return
+	 */
+	public static String capToFront(String str) {
+		StringBuilder sb = str.chars().filter(Character::isUpperCase).collect(StringBuilder::new,
+				StringBuilder::appendCodePoint, StringBuilder::append);
+		sb.append(str.chars().filter(Character::isLowerCase).collect(StringBuilder::new, StringBuilder::appendCodePoint,
+				StringBuilder::append));
+
+		return sb.toString();
+	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrieveMajor(String semver) {
+		return retrieveVersion(0, semver, semver);
+	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrieveMinor(String semver) {
+		return retrieveVersion(1, semver, "0");
+	}
+
+	/**
+	 * Semantic Versioning
+	 * 
+	 * @see https://edabit.com/challenge/H4smHFuL5wn58imFK
+	 * @param semver
+	 * @return
+	 */
+	public static String retrievePatch(String semver) {
+		return retrieveVersion(2, semver, "0");
+	}
+
+	private static String retrieveVersion(int v, String semver, String def) {
+		String[] semvers = semver.split("\\.");
+		return semvers.length > v ? semvers[v] : def;
 	}
 }

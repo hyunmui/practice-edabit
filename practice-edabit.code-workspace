@@ -2,6 +2,9 @@
 	"folders": [
 		{
 			"path": "java"
+		},
+		{
+			"path": "csharp"
 		}
 	]
 }
